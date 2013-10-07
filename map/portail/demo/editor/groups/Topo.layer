@@ -1,0 +1,21 @@
+LAYER {
+       
+    8-16 {
+        Opacity: 65
+        NAME: 'Topo'
+        TYPE: LINE
+        @layerconfig
+        DATA {
+            1-5: '../data/Lidar_Clip.shp'
+			6-10: '../data/Lidar_Clip.shp'
+            11-16: '../data/Lidar_Clip.shp'
+		}
+        CLASS {
+            STYLE {
+                COLOR: @topo
+                width: 0.3
+              
+            }	
+        }
+    }
+}

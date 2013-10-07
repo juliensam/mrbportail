@@ -1,0 +1,4246 @@
+MAP
+    CONFIG 'ON_MISSING_DATA' 'IGNORE'
+    CONFIG "MS_ERRORFILE" "../debugFile.log"
+    CONFIG 'PROJ_LIB' '../'
+    FONTSET '../fonts.lst'
+    IMAGETYPE png
+    MAXSIZE 4000
+    SIZE 800 800
+    UNITS meters
+    EXTENT -20000000 -20000000 20000000 20000000
+    IMAGECOLOR '#C6E2F2'
+    SHAPEPATH '../pdata/naturalEarth/'
+    WEB
+        METADATA
+            "ows_enable_request" "*"
+            "wms_srs" "EPSG:900913 EPSG:4326"
+            "labelcache_map_edge_buffer" "-10"
+            "wms_title" "Natural Earth World WMS"
+        END
+        IMAGEPATH '/tmp/ms_tmp/'
+        IMAGEURL '/ms_tmp/'
+    END
+    DEBUG 5
+    PROJECTION
+        "init=epsg:900913"
+    END
+    INCLUDE '../symbols.map'
+#---- LEVEL 1 ----#
+    LAYER
+        MAXSCALEDENOM 999999999
+        MINSCALEDENOM 268435456
+        NAME 'Property1'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Property.shp'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+                width 4
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 999999999
+        MINSCALEDENOM 268435456
+        NAME 'coastline1'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '110m_physical/ne_110m_coastline'
+        CLASS
+            STYLE
+                COLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 999999999
+        MINSCALEDENOM 268435456
+        NAME 'Geology1'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Geology_FLN.shp'
+        CLASSITEM 'Litho'
+        CLASS
+            EXPRESSION 'DUL'
+            STYLE
+                COLOR '#99CCFF'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'IF'
+            STYLE
+                COLOR '#FF0000'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'HBG'
+            STYLE
+                COLOR '#00FF00'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'KAT'
+            STYLE
+                COLOR '#FF99CC'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'LIF'
+            STYLE
+                COLOR '#FF9900'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'QMS'
+            STYLE
+                COLOR '#969696'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 999999999
+        MINSCALEDENOM 268435456
+        Opacity 65
+        NAME 'Topo1'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Lidar_Clip.shp'
+        CLASS
+            STYLE
+                COLOR '#000000'
+                width 0.3
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 999999999
+        MINSCALEDENOM 268435456
+        NAME 'Claim1'
+        TEMPLATE 'test'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        tileindex '../data/titles.shp'
+        tileitem 'LOCATION'
+        LABELITEM 'TIT_NO'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+            END
+        END
+    END
+
+#---- LEVEL 2 ----#
+    LAYER
+        MAXSCALEDENOM 268435456
+        MINSCALEDENOM 134217728
+        NAME 'Property2'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Property.shp'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+                width 4
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 268435456
+        MINSCALEDENOM 134217728
+        NAME 'coastline2'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '110m_physical/ne_110m_coastline'
+        CLASS
+            STYLE
+                COLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 268435456
+        MINSCALEDENOM 134217728
+        NAME 'Geology2'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Geology_FLN.shp'
+        CLASSITEM 'Litho'
+        CLASS
+            EXPRESSION 'DUL'
+            STYLE
+                COLOR '#99CCFF'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'IF'
+            STYLE
+                COLOR '#FF0000'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'HBG'
+            STYLE
+                COLOR '#00FF00'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'KAT'
+            STYLE
+                COLOR '#FF99CC'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'LIF'
+            STYLE
+                COLOR '#FF9900'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'QMS'
+            STYLE
+                COLOR '#969696'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 268435456
+        MINSCALEDENOM 134217728
+        Opacity 65
+        NAME 'Topo2'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Lidar_Clip.shp'
+        CLASS
+            STYLE
+                COLOR '#000000'
+                width 0.3
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 268435456
+        MINSCALEDENOM 134217728
+        NAME 'Claim2'
+        TEMPLATE 'test'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        tileindex '../data/titles.shp'
+        tileitem 'LOCATION'
+        LABELITEM 'TIT_NO'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+            END
+        END
+    END
+
+#---- LEVEL 3 ----#
+    LAYER
+        MAXSCALEDENOM 134217728
+        MINSCALEDENOM 67108864
+        NAME 'Property3'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Property.shp'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+                width 4
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 134217728
+        MINSCALEDENOM 67108864
+        NAME 'coastline3'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '110m_physical/ne_110m_coastline'
+        CLASS
+            STYLE
+                COLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 134217728
+        MINSCALEDENOM 67108864
+        NAME 'lakes3'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '110m_physical/ne_110m_lakes'
+        CLASS
+            STYLE
+                COLOR '#C6E2F2'
+                OUTLINECOLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 134217728
+        MINSCALEDENOM 67108864
+        NAME 'Geology3'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Geology_FLN.shp'
+        CLASSITEM 'Litho'
+        CLASS
+            EXPRESSION 'DUL'
+            STYLE
+                COLOR '#99CCFF'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'IF'
+            STYLE
+                COLOR '#FF0000'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'HBG'
+            STYLE
+                COLOR '#00FF00'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'KAT'
+            STYLE
+                COLOR '#FF99CC'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'LIF'
+            STYLE
+                COLOR '#FF9900'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'QMS'
+            STYLE
+                COLOR '#969696'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 134217728
+        MINSCALEDENOM 67108864
+        Opacity 65
+        NAME 'Topo3'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Lidar_Clip.shp'
+        CLASS
+            STYLE
+                COLOR '#000000'
+                width 0.3
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 134217728
+        MINSCALEDENOM 67108864
+        NAME 'Claim3'
+        TEMPLATE 'test'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        tileindex '../data/titles.shp'
+        tileitem 'LOCATION'
+        LABELITEM 'TIT_NO'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+            END
+        END
+    END
+
+#---- LEVEL 4 ----#
+    LAYER
+        MAXSCALEDENOM 67108864
+        MINSCALEDENOM 33554432
+        NAME 'Property4'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Property.shp'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+                width 4
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 67108864
+        MINSCALEDENOM 33554432
+        NAME 'coastline4'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '110m_physical/ne_110m_coastline'
+        CLASS
+            STYLE
+                COLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 67108864
+        MINSCALEDENOM 33554432
+        NAME 'lakes4'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '110m_physical/ne_110m_lakes'
+        CLASS
+            STYLE
+                COLOR '#C6E2F2'
+                OUTLINECOLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 67108864
+        MINSCALEDENOM 33554432
+        NAME 'Geology4'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Geology_FLN.shp'
+        CLASSITEM 'Litho'
+        CLASS
+            EXPRESSION 'DUL'
+            STYLE
+                COLOR '#99CCFF'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'IF'
+            STYLE
+                COLOR '#FF0000'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'HBG'
+            STYLE
+                COLOR '#00FF00'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'KAT'
+            STYLE
+                COLOR '#FF99CC'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'LIF'
+            STYLE
+                COLOR '#FF9900'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'QMS'
+            STYLE
+                COLOR '#969696'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 67108864
+        MINSCALEDENOM 33554432
+        Opacity 65
+        NAME 'Topo4'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Lidar_Clip.shp'
+        CLASS
+            STYLE
+                COLOR '#000000'
+                width 0.3
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 67108864
+        MINSCALEDENOM 33554432
+        NAME 'Claim4'
+        TEMPLATE 'test'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        tileindex '../data/titles.shp'
+        tileitem 'LOCATION'
+        LABELITEM 'TIT_NO'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+            END
+        END
+    END
+
+#---- LEVEL 5 ----#
+    LAYER
+        MAXSCALEDENOM 33554432
+        MINSCALEDENOM 16777216
+        NAME 'Property5'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Property.shp'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+                width 4
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 33554432
+        MINSCALEDENOM 16777216
+        NAME 'coastline5'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '110m_physical/ne_110m_coastline'
+        CLASS
+            STYLE
+                COLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 33554432
+        MINSCALEDENOM 16777216
+        NAME 'lakes5'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '50m_physical/ne_50m_lakes'
+        CLASS
+            STYLE
+                COLOR '#C6E2F2'
+                OUTLINECOLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 33554432
+        MINSCALEDENOM 16777216
+        NAME 'rivers5'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '50m_physical/ne_50m_rivers_lake_centerlines_scale_rank'
+        LABELITEM "name"
+        CLASS
+            EXPRESSION ([strokeweig] >= 0 AND [strokeweig] <= 0.2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 1.5
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.200000001 AND [strokeweig] <= 0.35)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 2
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.350000001 AND [strokeweig] <= 0.6)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 3
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.600000001 AND [strokeweig] <= 1)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 4
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 1.000000001 AND [strokeweig] <= 2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 5
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 33554432
+        MINSCALEDENOM 16777216
+        NAME 'Geology5'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Geology_FLN.shp'
+        CLASSITEM 'Litho'
+        CLASS
+            EXPRESSION 'DUL'
+            STYLE
+                COLOR '#99CCFF'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'IF'
+            STYLE
+                COLOR '#FF0000'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'HBG'
+            STYLE
+                COLOR '#00FF00'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'KAT'
+            STYLE
+                COLOR '#FF99CC'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'LIF'
+            STYLE
+                COLOR '#FF9900'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'QMS'
+            STYLE
+                COLOR '#969696'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 33554432
+        MINSCALEDENOM 16777216
+        Opacity 65
+        NAME 'Topo5'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Lidar_Clip.shp'
+        CLASS
+            STYLE
+                COLOR '#000000'
+                width 0.3
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 33554432
+        MINSCALEDENOM 16777216
+        NAME 'Claim5'
+        TEMPLATE 'test'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        tileindex '../data/titles.shp'
+        tileitem 'LOCATION'
+        LABELITEM 'TIT_NO'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+            END
+        END
+    END
+
+#---- LEVEL 6 ----#
+    LAYER
+        MAXSCALEDENOM 16777216
+        MINSCALEDENOM 8388608
+        NAME 'Property6'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Property.shp'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+                width 4
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 16777216
+        MINSCALEDENOM 8388608
+        NAME 'coastline6'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '50m_physical/ne_50m_coastline'
+        CLASS
+            STYLE
+                COLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 16777216
+        MINSCALEDENOM 8388608
+        NAME 'lakes6'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '50m_physical/ne_50m_lakes'
+        CLASS
+            STYLE
+                COLOR '#C6E2F2'
+                OUTLINECOLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 16777216
+        MINSCALEDENOM 8388608
+        NAME 'rivers6'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '50m_physical/ne_50m_rivers_lake_centerlines_scale_rank'
+        LABELITEM "name"
+        CLASS
+            EXPRESSION ([strokeweig] >= 0 AND [strokeweig] <= 0.2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 1.5
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.200000001 AND [strokeweig] <= 0.35)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 2
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.350000001 AND [strokeweig] <= 0.6)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 3
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.600000001 AND [strokeweig] <= 1)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 4
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 100
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 1.000000001 AND [strokeweig] <= 2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 5
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 16777216
+        MINSCALEDENOM 8388608
+        NAME 'Geology6'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Geology_FLN.shp'
+        CLASSITEM 'Litho'
+        CLASS
+            EXPRESSION 'DUL'
+            STYLE
+                COLOR '#99CCFF'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'IF'
+            STYLE
+                COLOR '#FF0000'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'HBG'
+            STYLE
+                COLOR '#00FF00'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'KAT'
+            STYLE
+                COLOR '#FF99CC'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'LIF'
+            STYLE
+                COLOR '#FF9900'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'QMS'
+            STYLE
+                COLOR '#969696'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 16777216
+        MINSCALEDENOM 8388608
+        Opacity 65
+        NAME 'Topo6'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Lidar_Clip.shp'
+        CLASS
+            STYLE
+                COLOR '#000000'
+                width 0.3
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 16777216
+        MINSCALEDENOM 8388608
+        NAME 'Claim6'
+        TEMPLATE 'test'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        tileindex '../data/titles.shp'
+        tileitem 'LOCATION'
+        LABELITEM 'TIT_NO'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+            END
+        END
+    END
+
+#---- LEVEL 7 ----#
+    LAYER
+        MAXSCALEDENOM 8388608
+        MINSCALEDENOM 4194304
+        NAME 'Property7'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Property.shp'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+                width 4
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 8388608
+        MINSCALEDENOM 4194304
+        NAME 'coastline7'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '50m_physical/ne_50m_coastline'
+        CLASS
+            STYLE
+                COLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 8388608
+        MINSCALEDENOM 4194304
+        NAME 'lakes7'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '50m_physical/ne_50m_lakes'
+        CLASS
+            STYLE
+                COLOR '#C6E2F2'
+                OUTLINECOLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 8388608
+        MINSCALEDENOM 4194304
+        NAME 'rivers7'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '50m_physical/ne_50m_rivers_lake_centerlines_scale_rank'
+        LABELITEM "name"
+        CLASS
+            EXPRESSION ([strokeweig] >= 0 AND [strokeweig] <= 0.2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 3
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.200000001 AND [strokeweig] <= 0.35)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 4
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.350000001 AND [strokeweig] <= 0.6)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 6
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.600000001 AND [strokeweig] <= 1)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 8
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 100
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 1.000000001 AND [strokeweig] <= 2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 10
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 8388608
+        MINSCALEDENOM 4194304
+        NAME 'Geology7'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Geology_FLN.shp'
+        CLASSITEM 'Litho'
+        CLASS
+            EXPRESSION 'DUL'
+            STYLE
+                COLOR '#99CCFF'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'IF'
+            STYLE
+                COLOR '#FF0000'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'HBG'
+            STYLE
+                COLOR '#00FF00'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'KAT'
+            STYLE
+                COLOR '#FF99CC'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'LIF'
+            STYLE
+                COLOR '#FF9900'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'QMS'
+            STYLE
+                COLOR '#969696'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 8388608
+        MINSCALEDENOM 4194304
+        Opacity 65
+        NAME 'Topo7'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Lidar_Clip.shp'
+        CLASS
+            STYLE
+                COLOR '#000000'
+                width 0.3
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 8388608
+        MINSCALEDENOM 4194304
+        NAME 'Claim7'
+        TEMPLATE 'test'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        tileindex '../data/titles.shp'
+        tileitem 'LOCATION'
+        LABELITEM 'TIT_NO'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+            END
+        END
+    END
+
+#---- LEVEL 8 ----#
+    LAYER
+        MAXSCALEDENOM 4194304
+        MINSCALEDENOM 2097152
+        NAME 'Property8'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Property.shp'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+                width 4
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 4194304
+        MINSCALEDENOM 2097152
+        NAME 'coastline8'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '50m_physical/ne_50m_coastline'
+        CLASS
+            STYLE
+                COLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 4194304
+        MINSCALEDENOM 2097152
+        NAME 'lakes8'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '50m_physical/ne_50m_lakes'
+        CLASS
+            STYLE
+                COLOR '#C6E2F2'
+                OUTLINECOLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 4194304
+        MINSCALEDENOM 2097152
+        NAME 'rivers8'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '50m_physical/ne_50m_rivers_lake_centerlines_scale_rank'
+        LABELITEM "name"
+        CLASS
+            EXPRESSION ([strokeweig] >= 0 AND [strokeweig] <= 0.2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 3
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.200000001 AND [strokeweig] <= 0.35)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 4
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.350000001 AND [strokeweig] <= 0.6)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 6
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.600000001 AND [strokeweig] <= 1)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 8
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 100
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 1.000000001 AND [strokeweig] <= 2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 10
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 4194304
+        MINSCALEDENOM 2097152
+        NAME 'Geology8'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Geology_FLN.shp'
+        CLASSITEM 'Litho'
+        CLASS
+            EXPRESSION 'DUL'
+            STYLE
+                COLOR '#99CCFF'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'IF'
+            STYLE
+                COLOR '#FF0000'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'HBG'
+            STYLE
+                COLOR '#00FF00'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'KAT'
+            STYLE
+                COLOR '#FF99CC'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'LIF'
+            STYLE
+                COLOR '#FF9900'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'QMS'
+            STYLE
+                COLOR '#969696'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 4194304
+        MINSCALEDENOM 2097152
+        NAME 'DDH Collar8'
+        TYPE POINT
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Collar'
+        LABELITEM 'HOLE_ID'
+        CLASS
+            #EXPRESSION: ([WORLDCITY] = 0)
+            STYLE
+                SYMBOL 'circle'
+                OUTLINECOLOR '#000000'
+                OUTLINEWIDTH 1
+                COLOR '#0066CC'
+                SIZE 6
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 4194304
+        MINSCALEDENOM 2097152
+        Opacity 65
+        NAME 'Topo8'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Lidar_Clip.shp'
+        CLASS
+            STYLE
+                COLOR '#000000'
+                width 0.3
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 4194304
+        MINSCALEDENOM 2097152
+        NAME 'Claim8'
+        TEMPLATE 'test'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        tileindex '../data/titles.shp'
+        tileitem 'LOCATION'
+        LABELITEM 'TIT_NO'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+            END
+        END
+    END
+
+#---- LEVEL 9 ----#
+    LAYER
+        MAXSCALEDENOM 2097152
+        MINSCALEDENOM 1048576
+        NAME 'Property9'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Property.shp'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+                width 4
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 2097152
+        MINSCALEDENOM 1048576
+        NAME 'coastline9'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '50m_physical/ne_50m_coastline'
+        CLASS
+            STYLE
+                COLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 2097152
+        MINSCALEDENOM 1048576
+        NAME 'lakes9'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '50m_physical/ne_50m_lakes'
+        CLASS
+            STYLE
+                COLOR '#C6E2F2'
+                OUTLINECOLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 2097152
+        MINSCALEDENOM 1048576
+        NAME 'rivers9'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '50m_physical/ne_50m_rivers_lake_centerlines_scale_rank'
+        LABELITEM "name"
+        CLASS
+            EXPRESSION ([strokeweig] >= 0 AND [strokeweig] <= 0.2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 3
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.200000001 AND [strokeweig] <= 0.35)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 4
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.350000001 AND [strokeweig] <= 0.6)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 6
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.600000001 AND [strokeweig] <= 1)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 8
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 100
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 1.000000001 AND [strokeweig] <= 2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 10
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 2097152
+        MINSCALEDENOM 1048576
+        NAME 'Geology9'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Geology_FLN.shp'
+        CLASSITEM 'Litho'
+        CLASS
+            EXPRESSION 'DUL'
+            STYLE
+                COLOR '#99CCFF'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'IF'
+            STYLE
+                COLOR '#FF0000'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'HBG'
+            STYLE
+                COLOR '#00FF00'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'KAT'
+            STYLE
+                COLOR '#FF99CC'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'LIF'
+            STYLE
+                COLOR '#FF9900'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'QMS'
+            STYLE
+                COLOR '#969696'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 2097152
+        MINSCALEDENOM 1048576
+        NAME 'DDH Collar9'
+        TYPE POINT
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Collar'
+        LABELITEM 'HOLE_ID'
+        CLASS
+            #EXPRESSION: ([WORLDCITY] = 0)
+            STYLE
+                SYMBOL 'circle'
+                OUTLINECOLOR '#000000'
+                OUTLINEWIDTH 1
+                COLOR '#0066CC'
+                SIZE 6
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 2097152
+        MINSCALEDENOM 1048576
+        Opacity 65
+        NAME 'Topo9'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Lidar_Clip.shp'
+        CLASS
+            STYLE
+                COLOR '#000000'
+                width 0.3
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 2097152
+        MINSCALEDENOM 1048576
+        NAME 'Claim9'
+        TEMPLATE 'test'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        tileindex '../data/titles.shp'
+        tileitem 'LOCATION'
+        LABELITEM 'TIT_NO'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+            END
+        END
+    END
+
+#---- LEVEL 10 ----#
+    LAYER
+        MAXSCALEDENOM 1048576
+        MINSCALEDENOM 524288
+        NAME 'Property10'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Property.shp'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+                width 4
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 1048576
+        MINSCALEDENOM 524288
+        NAME 'coastline10'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '50m_physical/ne_50m_coastline'
+        CLASS
+            STYLE
+                COLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 1048576
+        MINSCALEDENOM 524288
+        NAME 'lakes10'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '50m_physical/ne_50m_lakes'
+        CLASS
+            STYLE
+                COLOR '#C6E2F2'
+                OUTLINECOLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 1048576
+        MINSCALEDENOM 524288
+        NAME 'rivers10'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '50m_physical/ne_50m_rivers_lake_centerlines_scale_rank'
+        LABELITEM "name"
+        CLASS
+            EXPRESSION ([strokeweig] >= 0 AND [strokeweig] <= 0.2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 3
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.200000001 AND [strokeweig] <= 0.35)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 4
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.350000001 AND [strokeweig] <= 0.6)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 6
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.600000001 AND [strokeweig] <= 1)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 8
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 100
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 1.000000001 AND [strokeweig] <= 2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 10
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 1048576
+        MINSCALEDENOM 524288
+        NAME 'Geology10'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Geology_FLN.shp'
+        CLASSITEM 'Litho'
+        CLASS
+            EXPRESSION 'DUL'
+            STYLE
+                COLOR '#99CCFF'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'IF'
+            STYLE
+                COLOR '#FF0000'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'HBG'
+            STYLE
+                COLOR '#00FF00'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'KAT'
+            STYLE
+                COLOR '#FF99CC'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'LIF'
+            STYLE
+                COLOR '#FF9900'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'QMS'
+            STYLE
+                COLOR '#969696'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 1048576
+        MINSCALEDENOM 524288
+        NAME 'DDH Collar10'
+        TYPE POINT
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Collar'
+        LABELITEM 'HOLE_ID'
+        CLASS
+            #EXPRESSION: ([WORLDCITY] = 0)
+            STYLE
+                SYMBOL 'circle'
+                OUTLINECOLOR '#000000'
+                OUTLINEWIDTH 1
+                COLOR '#0066CC'
+                SIZE 6
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 1048576
+        MINSCALEDENOM 524288
+        Opacity 65
+        NAME 'Topo10'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Lidar_Clip.shp'
+        CLASS
+            STYLE
+                COLOR '#000000'
+                width 0.3
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 1048576
+        MINSCALEDENOM 524288
+        NAME 'Claim10'
+        TEMPLATE 'test'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        tileindex '../data/titles.shp'
+        tileitem 'LOCATION'
+        LABELITEM 'TIT_NO'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+            END
+        END
+    END
+
+#---- LEVEL 11 ----#
+    LAYER
+        MAXSCALEDENOM 524288
+        MINSCALEDENOM 262144
+        NAME 'Property11'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Property.shp'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+                width 4
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 524288
+        MINSCALEDENOM 262144
+        NAME 'coastline11'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '10m_physical/ne_10m_coastline'
+        CLASS
+            STYLE
+                COLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 524288
+        MINSCALEDENOM 262144
+        NAME 'lakes11'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '10m_physical/ne_10m_lakes'
+        CLASS
+            STYLE
+                COLOR '#C6E2F2'
+                OUTLINECOLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 524288
+        MINSCALEDENOM 262144
+        NAME 'rivers11'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '10m_physical/ne_10m_rivers_lake_centerlines_scale_rank'
+        LABELITEM "name"
+        CLASS
+            EXPRESSION ([strokeweig] >= 0 AND [strokeweig] <= 0.2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 3
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.200000001 AND [strokeweig] <= 0.35)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 4
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.350000001 AND [strokeweig] <= 0.6)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 6
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.600000001 AND [strokeweig] <= 1)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 8
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 100
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 1.000000001 AND [strokeweig] <= 2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 10
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 524288
+        MINSCALEDENOM 262144
+        NAME 'Geology11'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Geology_FLN.shp'
+        CLASSITEM 'Litho'
+        CLASS
+            EXPRESSION 'DUL'
+            STYLE
+                COLOR '#99CCFF'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'IF'
+            STYLE
+                COLOR '#FF0000'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'HBG'
+            STYLE
+                COLOR '#00FF00'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'KAT'
+            STYLE
+                COLOR '#FF99CC'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'LIF'
+            STYLE
+                COLOR '#FF9900'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'QMS'
+            STYLE
+                COLOR '#969696'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 524288
+        MINSCALEDENOM 262144
+        NAME 'DDH Collar11'
+        TYPE POINT
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Collar'
+        LABELITEM 'HOLE_ID'
+        CLASS
+            #EXPRESSION: ([WORLDCITY] = 0)
+            STYLE
+                SYMBOL 'circle'
+                OUTLINECOLOR '#000000'
+                OUTLINEWIDTH 1
+                COLOR '#0066CC'
+                SIZE 6
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 524288
+        MINSCALEDENOM 262144
+        Opacity 65
+        NAME 'Topo11'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Lidar_Clip.shp'
+        CLASS
+            STYLE
+                COLOR '#000000'
+                width 0.3
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 524288
+        MINSCALEDENOM 262144
+        NAME 'Claim11'
+        TEMPLATE 'test'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        tileindex '../data/titles.shp'
+        tileitem 'LOCATION'
+        LABELITEM 'TIT_NO'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+            END
+        END
+    END
+
+#---- LEVEL 12 ----#
+    LAYER
+        MAXSCALEDENOM 262144
+        MINSCALEDENOM 131072
+        NAME 'Property12'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Property.shp'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+                width 4
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 262144
+        MINSCALEDENOM 131072
+        NAME 'coastline12'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '10m_physical/ne_10m_coastline'
+        CLASS
+            STYLE
+                COLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 262144
+        MINSCALEDENOM 131072
+        NAME 'lakes12'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '10m_physical/ne_10m_lakes'
+        CLASS
+            STYLE
+                COLOR '#C6E2F2'
+                OUTLINECOLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 262144
+        MINSCALEDENOM 131072
+        NAME 'rivers12'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '10m_physical/ne_10m_rivers_lake_centerlines_scale_rank'
+        LABELITEM "name"
+        CLASS
+            EXPRESSION ([strokeweig] >= 0 AND [strokeweig] <= 0.2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 3
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.200000001 AND [strokeweig] <= 0.35)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 4
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.350000001 AND [strokeweig] <= 0.6)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 6
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.600000001 AND [strokeweig] <= 1)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 8
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 100
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 1.000000001 AND [strokeweig] <= 2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 10
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 262144
+        MINSCALEDENOM 131072
+        NAME 'Geology12'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Geology_FLN.shp'
+        CLASSITEM 'Litho'
+        CLASS
+            EXPRESSION 'DUL'
+            STYLE
+                COLOR '#99CCFF'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'IF'
+            STYLE
+                COLOR '#FF0000'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'HBG'
+            STYLE
+                COLOR '#00FF00'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'KAT'
+            STYLE
+                COLOR '#FF99CC'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'LIF'
+            STYLE
+                COLOR '#FF9900'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'QMS'
+            STYLE
+                COLOR '#969696'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 262144
+        MINSCALEDENOM 131072
+        NAME 'DDH Collar12'
+        TYPE POINT
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Collar'
+        LABELITEM 'HOLE_ID'
+        CLASS
+            #EXPRESSION: ([WORLDCITY] = 0)
+            STYLE
+                SYMBOL 'circle'
+                OUTLINECOLOR '#000000'
+                OUTLINEWIDTH 1
+                COLOR '#0066CC'
+                SIZE 6
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 262144
+        MINSCALEDENOM 131072
+        Opacity 65
+        NAME 'Topo12'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Lidar_Clip.shp'
+        CLASS
+            STYLE
+                COLOR '#000000'
+                width 0.3
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 262144
+        MINSCALEDENOM 131072
+        NAME 'Claim12'
+        TEMPLATE 'test'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        tileindex '../data/titles.shp'
+        tileitem 'LOCATION'
+        LABELITEM 'TIT_NO'
+        CLASS
+            LABEL
+                COLOR 0 0 0
+                OUTLINECOLOR 255 255 255
+                OUTLINEWIDTH 2
+                FONT 'vd'
+                TYPE truetype
+                SIZE 5
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+            STYLE
+                OUTLINECOLOR '#CC6600'
+            END
+        END
+    END
+
+#---- LEVEL 13 ----#
+    LAYER
+        MAXSCALEDENOM 131072
+        MINSCALEDENOM 65536
+        NAME 'Property13'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Property.shp'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+                width 4
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 131072
+        MINSCALEDENOM 65536
+        NAME 'coastline13'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '10m_physical/ne_10m_coastline'
+        CLASS
+            STYLE
+                COLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 131072
+        MINSCALEDENOM 65536
+        NAME 'lakes13'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '10m_physical/ne_10m_lakes'
+        CLASS
+            STYLE
+                COLOR '#C6E2F2'
+                OUTLINECOLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 131072
+        MINSCALEDENOM 65536
+        NAME 'rivers13'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '10m_physical/ne_10m_rivers_lake_centerlines_scale_rank'
+        LABELITEM "name"
+        CLASS
+            EXPRESSION ([strokeweig] >= 0 AND [strokeweig] <= 0.2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 3
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.200000001 AND [strokeweig] <= 0.35)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 4
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.350000001 AND [strokeweig] <= 0.6)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 6
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.600000001 AND [strokeweig] <= 1)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 8
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 100
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 1.000000001 AND [strokeweig] <= 2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 10
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 131072
+        MINSCALEDENOM 65536
+        NAME 'Geology13'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Geology_FLN.shp'
+        CLASSITEM 'Litho'
+        CLASS
+            EXPRESSION 'DUL'
+            STYLE
+                COLOR '#99CCFF'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'IF'
+            STYLE
+                COLOR '#FF0000'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'HBG'
+            STYLE
+                COLOR '#00FF00'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'KAT'
+            STYLE
+                COLOR '#FF99CC'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'LIF'
+            STYLE
+                COLOR '#FF9900'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'QMS'
+            STYLE
+                COLOR '#969696'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 131072
+        MINSCALEDENOM 65536
+        NAME 'DDH Collar13'
+        TYPE POINT
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Collar'
+        LABELITEM 'HOLE_ID'
+        CLASS
+            #EXPRESSION: ([WORLDCITY] = 0)
+            STYLE
+                SYMBOL 'circle'
+                OUTLINECOLOR '#000000'
+                OUTLINEWIDTH 1
+                COLOR '#0066CC'
+                SIZE 6
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 131072
+        MINSCALEDENOM 65536
+        Opacity 65
+        NAME 'Topo13'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Lidar_Clip.shp'
+        CLASS
+            STYLE
+                COLOR '#000000'
+                width 0.3
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 131072
+        MINSCALEDENOM 65536
+        NAME 'Claim13'
+        TEMPLATE 'test'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        tileindex '../data/titles.shp'
+        tileitem 'LOCATION'
+        LABELITEM 'TIT_NO'
+        CLASS
+            LABEL
+                COLOR 0 0 0
+                OUTLINECOLOR 255 255 255
+                OUTLINEWIDTH 2
+                FONT 'vd'
+                TYPE truetype
+                SIZE 5
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+            STYLE
+                OUTLINECOLOR '#CC6600'
+            END
+        END
+    END
+
+#---- LEVEL 14 ----#
+    LAYER
+        MAXSCALEDENOM 65536
+        MINSCALEDENOM 32768
+        NAME 'Property14'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Property.shp'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+                width 4
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 65536
+        MINSCALEDENOM 32768
+        NAME 'coastline14'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '10m_physical/ne_10m_coastline'
+        CLASS
+            STYLE
+                COLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 65536
+        MINSCALEDENOM 32768
+        NAME 'lakes14'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '10m_physical/ne_10m_lakes'
+        CLASS
+            STYLE
+                COLOR '#C6E2F2'
+                OUTLINECOLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 65536
+        MINSCALEDENOM 32768
+        NAME 'rivers14'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '10m_physical/ne_10m_rivers_lake_centerlines_scale_rank'
+        LABELITEM "name"
+        CLASS
+            EXPRESSION ([strokeweig] >= 0 AND [strokeweig] <= 0.2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 3
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.200000001 AND [strokeweig] <= 0.35)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 4
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.350000001 AND [strokeweig] <= 0.6)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 6
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.600000001 AND [strokeweig] <= 1)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 8
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 100
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 1.000000001 AND [strokeweig] <= 2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 10
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 65536
+        MINSCALEDENOM 32768
+        NAME 'Geology14'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Geology_FLN.shp'
+        CLASSITEM 'Litho'
+        CLASS
+            EXPRESSION 'DUL'
+            STYLE
+                COLOR '#99CCFF'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'IF'
+            STYLE
+                COLOR '#FF0000'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'HBG'
+            STYLE
+                COLOR '#00FF00'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'KAT'
+            STYLE
+                COLOR '#FF99CC'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'LIF'
+            STYLE
+                COLOR '#FF9900'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'QMS'
+            STYLE
+                COLOR '#969696'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 65536
+        MINSCALEDENOM 32768
+        NAME 'DDH Collar14'
+        TYPE POINT
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Collar'
+        LABELITEM 'HOLE_ID'
+        CLASS
+            #EXPRESSION: ([WORLDCITY] = 1)
+            LABEL
+                COLOR 0 0 0
+                OUTLINECOLOR 255 255 255
+                OUTLINEWIDTH 2
+                FONT 'vd'
+                TYPE truetype
+                SIZE 8
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+            STYLE
+                SYMBOL 'circle'
+                OUTLINECOLOR '#000000'
+                OUTLINEWIDTH 1
+                COLOR '#0066CC'
+                SIZE 10
+            END
+            STYLE
+                SYMBOL 'circle'
+                OUTLINECOLOR '#000000'
+                OUTLINEWIDTH 1
+                COLOR '#FF0000'
+                SIZE 5
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 65536
+        MINSCALEDENOM 32768
+        Opacity 65
+        NAME 'Topo14'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Lidar_Clip.shp'
+        CLASS
+            STYLE
+                COLOR '#000000'
+                width 0.3
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 65536
+        MINSCALEDENOM 32768
+        NAME 'Claim14'
+        TEMPLATE 'test'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        tileindex '../data/titles.shp'
+        tileitem 'LOCATION'
+        LABELITEM 'TIT_NO'
+        CLASS
+            LABEL
+                COLOR 0 0 0
+                OUTLINECOLOR 255 255 255
+                OUTLINEWIDTH 2
+                FONT 'vd'
+                TYPE truetype
+                SIZE 5
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+            STYLE
+                OUTLINECOLOR '#CC6600'
+            END
+        END
+    END
+
+#---- LEVEL 15 ----#
+    LAYER
+        MAXSCALEDENOM 32768
+        MINSCALEDENOM 16384
+        NAME 'Property15'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Property.shp'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+                width 4
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 32768
+        MINSCALEDENOM 16384
+        NAME 'coastline15'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '10m_physical/ne_10m_coastline'
+        CLASS
+            STYLE
+                COLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 32768
+        MINSCALEDENOM 16384
+        NAME 'lakes15'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '10m_physical/ne_10m_lakes'
+        CLASS
+            STYLE
+                COLOR '#C6E2F2'
+                OUTLINECOLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 32768
+        MINSCALEDENOM 16384
+        NAME 'rivers15'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '10m_physical/ne_10m_rivers_lake_centerlines_scale_rank'
+        LABELITEM "name"
+        CLASS
+            EXPRESSION ([strokeweig] >= 0 AND [strokeweig] <= 0.2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 3
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.200000001 AND [strokeweig] <= 0.35)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 4
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.350000001 AND [strokeweig] <= 0.6)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 6
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.600000001 AND [strokeweig] <= 1)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 8
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 100
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 1.000000001 AND [strokeweig] <= 2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 10
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 32768
+        MINSCALEDENOM 16384
+        NAME 'Geology15'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Geology_FLN.shp'
+        CLASSITEM 'Litho'
+        CLASS
+            EXPRESSION 'DUL'
+            STYLE
+                COLOR '#99CCFF'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'IF'
+            STYLE
+                COLOR '#FF0000'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'HBG'
+            STYLE
+                COLOR '#00FF00'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'KAT'
+            STYLE
+                COLOR '#FF99CC'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'LIF'
+            STYLE
+                COLOR '#FF9900'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'QMS'
+            STYLE
+                COLOR '#969696'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 32768
+        MINSCALEDENOM 16384
+        NAME 'DDH Collar15'
+        TYPE POINT
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Collar'
+        LABELITEM 'HOLE_ID'
+        CLASS
+            #EXPRESSION: ([WORLDCITY] = 1)
+            LABEL
+                COLOR 0 0 0
+                OUTLINECOLOR 255 255 255
+                OUTLINEWIDTH 2
+                FONT 'vd'
+                TYPE truetype
+                SIZE 8
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+            STYLE
+                SYMBOL 'circle'
+                OUTLINECOLOR '#000000'
+                OUTLINEWIDTH 1
+                COLOR '#0066CC'
+                SIZE 10
+            END
+            STYLE
+                SYMBOL 'circle'
+                OUTLINECOLOR '#000000'
+                OUTLINEWIDTH 1
+                COLOR '#FF0000'
+                SIZE 5
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 32768
+        MINSCALEDENOM 16384
+        Opacity 65
+        NAME 'Topo15'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Lidar_Clip.shp'
+        CLASS
+            STYLE
+                COLOR '#000000'
+                width 0.3
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 32768
+        MINSCALEDENOM 16384
+        NAME 'Claim15'
+        TEMPLATE 'test'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        tileindex '../data/titles.shp'
+        tileitem 'LOCATION'
+        LABELITEM 'TIT_NO'
+        CLASS
+            LABEL
+                COLOR 0 0 0
+                OUTLINECOLOR 255 255 255
+                OUTLINEWIDTH 2
+                FONT 'vd'
+                TYPE truetype
+                SIZE 5
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+            STYLE
+                OUTLINECOLOR '#CC6600'
+            END
+        END
+    END
+
+#---- LEVEL 16 ----#
+    LAYER
+        MAXSCALEDENOM 16384
+        MINSCALEDENOM 8192
+        NAME 'Property16'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Property.shp'
+        CLASS
+            STYLE
+                OUTLINECOLOR '#CC6600'
+                width 4
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 16384
+        MINSCALEDENOM 8192
+        NAME 'coastline16'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '10m_physical/ne_10m_coastline'
+        CLASS
+            STYLE
+                COLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 16384
+        MINSCALEDENOM 8192
+        NAME 'lakes16'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '10m_physical/ne_10m_lakes'
+        CLASS
+            STYLE
+                COLOR '#C6E2F2'
+                OUTLINECOLOR '#469FC3'
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 16384
+        MINSCALEDENOM 8192
+        NAME 'rivers16'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '10m_physical/ne_10m_rivers_lake_centerlines_scale_rank'
+        LABELITEM "name"
+        CLASS
+            EXPRESSION ([strokeweig] >= 0 AND [strokeweig] <= 0.2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 3
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.200000001 AND [strokeweig] <= 0.35)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 4
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.350000001 AND [strokeweig] <= 0.6)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 6
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 0.600000001 AND [strokeweig] <= 1)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 8
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 100
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        CLASS
+            EXPRESSION ([strokeweig] >= 1.000000001 AND [strokeweig] <= 2)
+            STYLE
+                COLOR '#6CAAC3'
+                WIDTH 10
+            END
+            LABEL
+                COLOR '#80C0FF'
+                OUTLINECOLOR 255 255 255
+                FONT 'scb'
+                TYPE truetype
+                SIZE 10
+                REPEATDISTANCE 100
+                MINDISTANCE 300
+                ANGLE FOLLOW
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 16384
+        MINSCALEDENOM 8192
+        NAME 'Geology16'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Geology_FLN.shp'
+        CLASSITEM 'Litho'
+        CLASS
+            EXPRESSION 'DUL'
+            STYLE
+                COLOR '#99CCFF'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'IF'
+            STYLE
+                COLOR '#FF0000'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'HBG'
+            STYLE
+                COLOR '#00FF00'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'KAT'
+            STYLE
+                COLOR '#FF99CC'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'LIF'
+            STYLE
+                COLOR '#FF9900'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+        CLASS
+            EXPRESSION 'QMS'
+            STYLE
+                COLOR '#969696'
+                OUTLINECOLOR '#000000'
+                width 1
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 16384
+        MINSCALEDENOM 8192
+        NAME 'DDH Collar16'
+        TYPE POINT
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Collar'
+        LABELITEM 'HOLE_ID'
+        CLASS
+            #EXPRESSION: ([WORLDCITY] = 1)
+            LABEL
+                COLOR 0 0 0
+                OUTLINECOLOR 255 255 255
+                OUTLINEWIDTH 2
+                FONT 'vd'
+                TYPE truetype
+                SIZE 8
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+            STYLE
+                SYMBOL 'circle'
+                OUTLINECOLOR '#000000'
+                OUTLINEWIDTH 1
+                COLOR '#0066CC'
+                SIZE 10
+            END
+            STYLE
+                SYMBOL 'circle'
+                OUTLINECOLOR '#000000'
+                OUTLINEWIDTH 1
+                COLOR '#FF0000'
+                SIZE 5
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 16384
+        MINSCALEDENOM 8192
+        Opacity 65
+        NAME 'Topo16'
+        TYPE LINE
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        DATA '../data/Lidar_Clip.shp'
+        CLASS
+            STYLE
+                COLOR '#000000'
+                width 0.3
+            END
+        END
+    END
+    LAYER
+        MAXSCALEDENOM 16384
+        MINSCALEDENOM 8192
+        NAME 'Claim16'
+        TEMPLATE 'test'
+        TYPE POLYGON
+        GROUP 'default'
+        STATUS ON
+        PROJECTION
+            'init=epsg:4326'
+        END
+        PROCESSING 'LABEL_NO_CLIP=ON'
+        PROCESSING 'CLOSE_CONNECTION=DEFER'
+        tileindex '../data/titles.shp'
+        tileitem 'LOCATION'
+        LABELITEM 'TIT_NO'
+        CLASS
+            LABEL
+                COLOR 0 0 0
+                OUTLINECOLOR 255 255 255
+                OUTLINEWIDTH 2
+                FONT 'vd'
+                TYPE truetype
+                SIZE 5
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+            STYLE
+                OUTLINECOLOR '#CC6600'
+            END
+        END
+    END
+
+END

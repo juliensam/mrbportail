@@ -1,0 +1,67 @@
+LAYER {
+    8-16 {
+        NAME: 'DDH Collar'
+        TYPE: POINT
+        @layerconfig
+        DATA {
+	        1-5: '../data/Collar'
+            8-16: '../data/Collar'
+	    }
+    	LABELITEM: 'HOLE_ID'
+        CLASS {
+            14-16 {
+                ##EXPRESSION: ([WORLDCITY] = 1)
+                LABEL {
+                  	COLOR: 0 0 0
+                  	OUTLINECOLOR: 255 255 255
+                  	OUTLINEWIDTH: 2
+                  	FONT: 'vd'
+                  	TYPE: truetype
+                  	SIZE {
+                      	4-6: 4
+                      	7-16: 8
+                  	}
+                  	POSITION: AUTO
+                  	PARTIALS: FALSE
+                }
+            	STYLE {
+                    14-16 {
+                        SYMBOL: 'circle'
+                        OUTLINECOLOR: '#000000'
+                        OUTLINEWIDTH: 1
+                        COLOR: '#0066CC'
+                        SIZE {
+							5: 2
+                            6-7: 8
+                            8-16: 10
+						}
+                    }
+		        }
+				STYLE {
+                    14-16 {
+                        SYMBOL: 'circle'
+                        OUTLINECOLOR: '#000000'
+                        OUTLINEWIDTH: 1
+                        COLOR: '#FF0000'
+                        SIZE: 5
+                    }
+		        }
+            }
+        }
+        CLASS {
+            5-13 {
+                ##EXPRESSION: ([WORLDCITY] = 0)
+                
+            	STYLE {
+                    5-13 {
+                        SYMBOL: 'circle'
+                        OUTLINECOLOR: '#000000'
+                        OUTLINEWIDTH: 1
+                        COLOR: '#0066CC'
+                        SIZE: 6
+                    }
+		        }
+            }
+        }
+    }
+}

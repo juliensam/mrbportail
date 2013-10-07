@@ -1,0 +1,37 @@
+LAYER {
+    8-16 {
+        NAME: 'Claim'
+        TEMPLATE: 'test'
+        TYPE: POLYGON
+        METADATA: {
+                  gml_include_items:'all'
+                  wms_include_items:'all'
+                  }
+        dump: true
+ 		@layerconfig
+        tileindex:'../data/titles.shp'
+        tileitem: 'LOCATION'
+        LABELITEM: 'TIT_NO'
+        CLASS {       
+			LABEL {
+                   12-16 {
+                  	COLOR: 0 0 0
+                  	OUTLINECOLOR: 255 255 255
+                  	OUTLINEWIDTH: 2
+                  	FONT: 'vd'
+                  	TYPE: truetype
+                  	SIZE {
+                      	4-6: 3
+                      	7-16: 5
+                  	}
+                  	POSITION: AUTO
+                  	PARTIALS: FALSE
+                }
+            }
+            STYLE {
+                
+                OUTLINECOLOR: '#CC6600'
+            }
+        }
+    }
+}

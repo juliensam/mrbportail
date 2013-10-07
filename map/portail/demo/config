@@ -1,0 +1,8 @@
+ORDER {
+    1: groups/Property.layer 
+    2: groups/water.layer 
+    3: groups/Geology.layer 
+    4: groups/DDH.layer 
+    5: groups/Topo.layer 
+    6: groups/Claim.layer 
+}

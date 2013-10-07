@@ -1,0 +1,19 @@
+LAYER {
+    8-16 {
+        NAME: 'Property'
+        TYPE: POLYGON
+        @layerconfig
+        DATA {
+            1-5: '../data/Property.shp'
+            6-10: '../data/Property.shp'
+            11-16: '../data/Property.shp'		
+	    }
+        CLASS {
+            STYLE {
+                
+                OUTLINECOLOR: '#CC6600'
+                width: 4
+            }
+        }
+    }
+}

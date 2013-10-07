@@ -1,0 +1,396 @@
+
+
+
+
+
+
+LAYERS {
+LAYER {
+    8-16 {
+        NAME: 'Property'
+        TYPE: POLYGON
+        @layerconfig
+        DATA {
+            1-5: '../data/Property.shp'
+            6-10: '../data/Property.shp'
+            11-16: '../data/Property.shp'		
+	    }
+        CLASS {
+            STYLE {
+                
+                OUTLINECOLOR: '#CC6600'
+                width: 4
+            }
+        }
+    }
+}
+
+LAYER {
+    1-16 {
+        NAME: 'coastline'
+        TYPE: LINE
+        @layerconfig
+        DATA {
+            1-5: '110m_physical/ne_110m_coastline'
+			6-10: '50m_physical/ne_50m_coastline'
+            11-16: '10m_physical/ne_10m_coastline'
+		}
+        CLASS {
+            STYLE {
+                COLOR: @watercolor_ol
+            }
+        }
+    }
+}
+
+LAYER {
+    3-16 {
+        NAME: 'lakes'
+        TYPE: POLYGON
+        @layerconfig
+        DATA {
+            1-4: '110m_physical/ne_110m_lakes'
+            5-10: '50m_physical/ne_50m_lakes'
+            11-16: '10m_physical/ne_10m_lakes'		
+		}
+        CLASS {
+            STYLE {
+                COLOR: @watercolor
+                OUTLINECOLOR: @watercolor_ol
+            }
+        }
+    }
+}
+
+LAYER {
+    5-16 {
+        NAME: 'rivers'
+        TYPE: LINE
+        @layerconfig
+        DATA {
+            5-10: '50m_physical/ne_50m_rivers_lake_centerlines_scale_rank'
+            11-16: '10m_physical/ne_10m_rivers_lake_centerlines_scale_rank'	
+		}
+    	LABELITEM: "name"
+        CLASS {
+            EXPRESSION: ([strokeweig] >= 0 AND [strokeweig] <= 0.2)
+            STYLE {
+                COLOR: @rivercolor  
+                WIDTH {
+					5-6: 1.5
+					7-16: 3
+				}
+            }
+            LABEL {
+                6-16 {
+                	COLOR: @watercolor_lbl
+                	OUTLINECOLOR: 255 255 255
+                	FONT: 'scb'
+                	TYPE: truetype
+                	SIZE: 10
+                    REPEATDISTANCE: 100
+                    MINDISTANCE: 300
+                	ANGLE: FOLLOW
+                	POSITION: AUTO
+                	PARTIALS: FALSE
+                }
+            }    
+        }
+    	CLASS {
+            EXPRESSION: ([strokeweig] >= 0.200000001 AND [strokeweig] <= 0.35)
+            STYLE {
+                COLOR: @rivercolor
+                WIDTH {
+					5-6: 2
+					7-16: 4
+				}
+            }
+        	LABEL {
+                6-16 {
+                	COLOR: @watercolor_lbl
+                	OUTLINECOLOR: 255 255 255
+                	FONT: 'scb'
+                	TYPE: truetype
+                	SIZE: 10
+                    REPEATDISTANCE: 100
+                    MINDISTANCE: 300
+                	ANGLE: FOLLOW
+                	POSITION: AUTO
+                	PARTIALS: FALSE
+                }
+            } 
+        }
+    	CLASS {
+            EXPRESSION: ([strokeweig] >= 0.350000001 AND [strokeweig] <= 0.6)
+            STYLE {
+                COLOR: @rivercolor
+                WIDTH {
+					5-6: 3
+					7-16: 6
+				}
+            }
+        	LABEL {
+                6-16 {
+                	COLOR: @watercolor_lbl
+                	OUTLINECOLOR: 255 255 255
+                	FONT: 'scb'
+                	TYPE: truetype
+                	SIZE: 10
+                    REPEATDISTANCE: 100
+                    MINDISTANCE: 300
+                	ANGLE: FOLLOW
+                	POSITION: AUTO
+                	PARTIALS: FALSE
+                }
+            } 
+        }
+    	CLASS {
+            EXPRESSION: ([strokeweig] >= 0.600000001 AND [strokeweig] <= 1)
+            STYLE {
+                COLOR: @rivercolor
+                WIDTH {
+					5-6: 4
+					7-16: 8
+				}
+            }
+        	LABEL {
+                6-16 {
+                	COLOR: @watercolor_lbl
+                	OUTLINECOLOR: 255 255 255
+                	FONT: 'scb'
+                	TYPE: truetype
+                	SIZE: 10
+                    REPEATDISTANCE: 100
+                    MINDISTANCE: 100
+                	ANGLE: FOLLOW
+                	POSITION: AUTO
+                	PARTIALS: FALSE
+                }
+            } 
+        }
+    	CLASS {
+            EXPRESSION: ([strokeweig] >= 1.000000001 AND [strokeweig] <= 2)
+            STYLE {
+                COLOR: @rivercolor
+                WIDTH {
+					5-6: 5
+					7-16: 10
+				}
+            }
+        	LABEL {
+                6-16 {
+                	COLOR: @watercolor_lbl
+                	OUTLINECOLOR: 255 255 255
+                	FONT: 'scb'
+                	TYPE: truetype
+                	SIZE: 10
+                    REPEATDISTANCE: 100
+                    MINDISTANCE: 300
+                	ANGLE: FOLLOW
+                	POSITION: AUTO
+                	PARTIALS: FALSE
+                }
+            } 
+        }}}
+
+
+
+
+
+LAYER {
+    8-16 {
+        NAME: 'Geology'
+        TYPE: POLYGON
+        @layerconfig
+        DATA {
+            1-5: '../data/Geology_FLN.shp'
+            6-10: '../data/Geology_FLN.shp'
+            11-16: '../data/Geology_FLN.shp'		
+	    }
+    	CLASSITEM: 'Litho'
+        CLASS {
+               EXPRESSION:'DUL'
+            STYLE {
+                
+                COLOR: '#99CCFF'
+				OUTLINECOLOR: '#000000'
+                width: 1
+                
+            }
+        }
+        
+    	CLASS {
+               EXPRESSION:'IF'
+            STYLE {
+                
+                COLOR: '#FF0000'
+				OUTLINECOLOR: '#000000'
+                width: 1
+            }
+        }
+        	CLASS {
+               EXPRESSION:'HBG'
+            STYLE {
+                
+                COLOR: '#00FF00'
+				OUTLINECOLOR: '#000000'
+                width: 1
+            }
+        }
+	CLASS {
+               EXPRESSION:'KAT'
+            STYLE {
+                
+                COLOR: '#FF99CC'
+				OUTLINECOLOR: '#000000'
+                width: 1
+            }
+        }
+	CLASS {
+               EXPRESSION:'LIF'
+            STYLE {
+                
+                COLOR: '#FF9900'
+				OUTLINECOLOR: '#000000'
+                width: 1
+            }
+        }
+	CLASS {
+               EXPRESSION:'QMS'
+            STYLE {
+                
+                COLOR: '#969696'
+				OUTLINECOLOR: '#000000'
+                width: 1
+            }
+        }
+}
+}
+LAYER {
+    8-16 {
+        NAME: 'DDH Collar'
+        TYPE: POINT
+        @layerconfig
+        DATA {
+	        1-5: '../data/Collar'
+            8-16: '../data/Collar'
+	    }
+    	LABELITEM: 'HOLE_ID'
+        CLASS {
+            14-16 {
+                ##EXPRESSION: ([WORLDCITY] = 1)
+                LABEL {
+                  	COLOR: 0 0 0
+                  	OUTLINECOLOR: 255 255 255
+                  	OUTLINEWIDTH: 2
+                  	FONT: 'vd'
+                  	TYPE: truetype
+                  	SIZE {
+                      	4-6: 4
+                      	7-16: 8
+                  	}
+                  	POSITION: AUTO
+                  	PARTIALS: FALSE
+                }
+            	STYLE {
+                    14-16 {
+                        SYMBOL: 'circle'
+                        OUTLINECOLOR: '#000000'
+                        OUTLINEWIDTH: 1
+                        COLOR: '#0066CC'
+                        SIZE {
+							5: 2
+                            6-7: 8
+                            8-16: 10
+						}
+                    }
+		        }
+				STYLE {
+                    14-16 {
+                        SYMBOL: 'circle'
+                        OUTLINECOLOR: '#000000'
+                        OUTLINEWIDTH: 1
+                        COLOR: '#FF0000'
+                        SIZE: 5
+                    }
+		        }
+            }
+        }
+        CLASS {
+            5-13 {
+                ##EXPRESSION: ([WORLDCITY] = 0)
+                
+            	STYLE {
+                    5-13 {
+                        SYMBOL: 'circle'
+                        OUTLINECOLOR: '#000000'
+                        OUTLINEWIDTH: 1
+                        COLOR: '#0066CC'
+                        SIZE: 6
+                    }
+		        }
+            }
+        }
+    }
+}
+
+LAYER {
+       
+    8-16 {
+        Opacity: 65
+        NAME: 'Topo'
+        TYPE: LINE
+        @layerconfig
+        DATA {
+            1-5: '../data/Lidar_Clip.shp'
+			6-10: '../data/Lidar_Clip.shp'
+            11-16: '../data/Lidar_Clip.shp'
+		}
+        CLASS {
+            STYLE {
+                COLOR: @topo
+                width: 0.3
+              
+            }	
+        }
+    }
+}
+LAYER {
+    8-16 {
+        NAME: 'Claim'
+        TEMPLATE: 'test'
+        TYPE: POLYGON
+        METADATA: {
+                  gml_include_items:'all'
+                  wms_include_items:'all'
+                  }
+        dump: true
+ 		@layerconfig
+        tileindex:'../data/titles.shp'
+        tileitem: 'LOCATION'
+        LABELITEM: 'TIT_NO'
+        CLASS {       
+			LABEL {
+                   12-16 {
+                  	COLOR: 0 0 0
+                  	OUTLINECOLOR: 255 255 255
+                  	OUTLINEWIDTH: 2
+                  	FONT: 'vd'
+                  	TYPE: truetype
+                  	SIZE {
+                      	4-6: 3
+                      	7-16: 5
+                  	}
+                  	POSITION: AUTO
+                  	PARTIALS: FALSE
+                }
+            }
+            STYLE {
+                
+                OUTLINECOLOR: '#CC6600'
+            }
+        }
+    }
+}
+
+}

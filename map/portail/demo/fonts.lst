@@ -1,0 +1,4 @@
+sc fonts/DejaVuSansCondensed.ttf
+scb fonts/DejaVuSansCondensed-Bold.ttf
+vd fonts/verdana.ttf
+cm fonts/comic.ttf
