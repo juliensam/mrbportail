@@ -11,6 +11,7 @@ Ext.define('CF.view.Viewport', {
         'Ext.resizer.Splitter',
         'CF.view.Header',
         'CF.view.Map',
+        'CF.view.Tree',
         //'CF.view.summit.Chart',
         'CF.view.summit.Grid',
         'CF.view.summit.tab.Panel'
@@ -30,6 +31,8 @@ Ext.define('CF.view.Viewport', {
                 items: [{
                     xtype: 'cf_mappanel'
                 }, {
+                    xtype: 'cf_tree'
+                },{
                     xtype: 'panel',
                     region: 'east',
                     border: false,
