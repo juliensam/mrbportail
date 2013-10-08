@@ -13,6 +13,10 @@ Ext.define('CF.controller.Map', {
         {ref: 'summitGrid', selector: 'summitgrid'}
     ],
 
+    // private properties
+
+    summitTabPanel: null,
+
     init: function() {
         var me = this;
 
@@ -24,6 +28,12 @@ Ext.define('CF.controller.Map', {
         this.control({
             'cf_mappanel': {
                 'beforerender': this.onMapPanelBeforeRender
+            },
+            'summittabpanel': {
+                'beforerender': this.onSummitTabPanelBeforeRender
+            },
+            'summitgrid': {
+                'selectionchange': this.onSummitGridSelectionChange
             }
         }, this);
     },
@@ -62,6 +72,7 @@ Ext.define('CF.controller.Map', {
             {layers: 'Forage_diamant',transparent:true}, {isBaseLayer: false}
         );
         layers.push(mapserv);
+
 		
 		// OpenLayers object creating
         var mapserv = new OpenLayers.Layer.WMS(
@@ -70,7 +81,6 @@ Ext.define('CF.controller.Map', {
             {layers: 'default',transparent:true}, {isBaseLayer: false}
         );
         layers.push(mapserv);
-
 
 
         // create vector layer
@@ -150,6 +160,16 @@ Ext.define('CF.controller.Map', {
         var dataExtent = store.layer.getDataExtent();
         if (dataExtent) {
             store.layer.map.zoomToExtent(dataExtent);
+        }
+    },
+
+    onSummitTabPanelBeforeRender: function(tabPanel, options) {
+        this.summitTabPanel = tabPanel;
+    },
+
+    onSummitGridSelectionChange: function(model, records) {
+        if (records[0]) {
+            this.summitTabPanel.loadRecord(records[0]);
         }
     }
 });

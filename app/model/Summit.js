@@ -42,6 +42,45 @@ Ext.define('CF.model.Summit', {
                 // record.raw a OpenLayers.Feature.Vector instance
                 return 1000 - record.data.LENGTH;
             }
+        },
+
+        // custom fields
+        {
+          name: 'holeType', 
+          type: 'int',
+          convert: function(value, record) {
+              // values: 1-4
+              return Math.floor(Math.random() * 4) + 1;
+          }
+        },
+
+        {
+          name: 'fer', 
+          type: 'string',
+          convert: function(value, record) {
+            return [Math.floor(Math.random() * 1000), ' ppm'].join('');
+          }
+        },
+        {
+          name: 'cuivre', 
+          type: 'string',
+          convert: function(value, record) {
+            return [Math.floor(Math.random() * 1000), ' ppm'].join('');
+          }
+        },
+        {
+          name: 'or', 
+          type: 'string',
+          convert: function(value, record) {
+            return [Math.floor(Math.random() * 1000), ' ppm'].join('');
+          }
+        },
+        {
+          name: 'platine', 
+          type: 'string',
+          convert: function(value, record) {
+            return [Math.floor(Math.random() * 1000), ' ppm'].join('');
+          }
         }
     ]
 });
