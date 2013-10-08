@@ -133,15 +133,6 @@ Ext.define('CF.controller.Map', {
 
         mapPanel.map.addLayers(layers);
 
-        // some more controls
-        mapPanel.map.addControls([new OpenLayers.Control.DragFeature(vecLayer, {
-            autoActivate: true,
-            onComplete: function(feature, px) {
-                var store = me.getSummitsStore();
-                store.fireEvent('update', store, store.getByFeature(feature));
-            }
-        })]);
-
         // for dev purpose
         map = mapPanel.map;
         mapPanel = mapPanel;
