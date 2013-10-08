@@ -40,7 +40,11 @@ Ext.define('CF.view.summit.Log', {
                 labelAlign: 'left',
                 msgTarget: 'side'
             },
-            items: [fieldset, this.dummyBar]
+            items: [
+                fieldset,
+                {html: '<h2>Composition borehole</h2>', border: false},
+                this.dummyBar
+            ]
         });
 
         this.callParent(arguments);
