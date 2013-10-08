@@ -58,7 +58,7 @@ Ext.define('CF.controller.Map', {
         var wms = new OpenLayers.Layer.WMS(
             "Landsat BNDT",
             "http://ows.geobase.ca/wms/geobase_fr",
-            {layers: 'l,imagery:landsat7:743'}
+            {layers: 'imagery:landsat7'}
         );
         layers.push(wms);
 		        // OpenLayers object creating
