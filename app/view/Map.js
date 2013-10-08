@@ -50,25 +50,27 @@ Ext.define('CF.view.Map', {
                 ])
             }),
             map: map,
-            text: "max extent",
-            tooltip: "zoom to max extent"
+            text: "Initial View",
+            tooltip: "Zoom to the initial view.",
+            iconCls: 'cf-button-maxextent'
         })));
 
         items.push("-");
 
         // Navigation control
         items.push(Ext.create('Ext.button.Button',Ext.create('GeoExt.Action', {
-            text: "nav",
+            text: "Navigation",
             control: new OpenLayers.Control.Navigation(),
             map: map,
             // button options
             toggleGroup: "draw",
             allowDepress: false,
             pressed: true,
-            tooltip: "navigate",
+            tooltip: "Pan/Zoom the map.",
             // check item options
             group: "draw",
-            checked: true
+            checked: true,
+            iconCls: 'cf-button-navigation'
         })));
 
         items.push("-");
@@ -78,26 +80,30 @@ Ext.define('CF.view.Map', {
         map.addControl(ctrl);
         
         items.push(Ext.create('Ext.button.Button', Ext.create('GeoExt.Action', {
-            text: "previous",
+            text: "Previous",
             control: ctrl.previous,
             disabled: true,
-            tooltip: "previous in history"
+            tooltip: "Go back in map navigation history.",
+            iconCls: 'cf-button-history-back'
         })));
         
         items.push(Ext.create('Ext.button.Button', Ext.create('GeoExt.Action', {
-            text: "next",
+            text: "Next",
             control: ctrl.next,
             disabled: true,
-            tooltip: "next in history"
+            tooltip: "Redo navigation history.",
+            iconCls: 'cf-button-history-next'
         })));
         items.push("->");
 
         // Help action
+        /*
         items.push(
             Ext.create('Ext.button.Button', Ext.create('CF.view.help.Action', {
                 windowContentEl: "help"
             }))
         );
+        */
         
         Ext.apply(me, {
             map: map,
