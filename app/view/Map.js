@@ -30,8 +30,25 @@ Ext.define('CF.view.Map', {
         });
 
         // ZoomToMaxExtent control, a "button" control
+        OpenLayers.Control.ZoomToCustomExtent = OpenLayers.Class(OpenLayers.Control.Button, {
+            extent: null,
+            trigger: function() {
+                if (this.map) {
+                    this.map.zoomToExtent(this.extent);
+                }    
+            },
+            CLASS_NAME: "OpenLayers.Control.ZoomToCustomExtent"
+        });
+
         items.push(Ext.create('Ext.button.Button', Ext.create('GeoExt.Action', {
-            control: new OpenLayers.Control.ZoomToMaxExtent(),
+            control: new OpenLayers.Control.ZoomToCustomExtent({
+                extent: new OpenLayers.Bounds.fromArray([
+                    -67.799306191407,
+                    52.014141957032,
+                    -66.927266396485,
+                    52.957592884766
+                ])
+            }),
             map: map,
             text: "max extent",
             tooltip: "zoom to max extent"
