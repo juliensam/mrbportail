@@ -3,8 +3,13 @@ Ext.define('CF.view.summit.Log', {
     alias : 'widget.summitlog',
 
     requires: [
-        'Ext.form.*'
+        'Ext.form.*',
+        'CF.view.summit.DummyBar'
     ],
+
+    // private
+
+    dummyBar: null,
 
     initComponent: function() {
         var fieldset = {
@@ -25,6 +30,8 @@ Ext.define('CF.view.summit.Log', {
             name: 'HOLE_ID'
         });
 
+        this.dummyBar = Ext.create('CF.view.summit.DummyBar');
+
         Ext.apply(this, {
             title:'Log',
             id: 'company-form',
@@ -33,9 +40,14 @@ Ext.define('CF.view.summit.Log', {
                 labelAlign: 'left',
                 msgTarget: 'side'
             },
-            items: [fieldset]
+            items: [fieldset, this.dummyBar]
         });
 
         this.callParent(arguments);
+    },
+
+    // public
+    updateDummy: function() {
+        this.dummyBar.update();
     }
 });

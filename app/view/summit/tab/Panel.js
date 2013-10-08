@@ -65,5 +65,6 @@ Ext.define('CF.view.summit.tab.Panel', {
     // load specified record in children components
     loadRecord: function(record) {
         this.summitLog.getForm().loadRecord(record);
+        this.summitLog.updateDummy();
     }
 });
