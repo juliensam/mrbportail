@@ -77,7 +77,7 @@ Ext.define('CF.controller.Map', {
 		// OpenLayers object creating
         var mapserv = new OpenLayers.Layer.WMS(
             "WMS MRB",
-            "http://geohack2.mapgears.com/cgi-bin/mapserv?map=/opt/scribeui/application/workspaces/portail/demo/map/demo-adube.map",
+            "http://geohack2.mapgears.com/cgi-bin/mapserv?map=/opt/scribeui/application/workspaces/portail/demo/map/demo.map",
             {layers: 'default',transparent:true}, {isBaseLayer: false}
         );
         layers.push(mapserv);
