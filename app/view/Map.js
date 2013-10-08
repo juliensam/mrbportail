@@ -13,9 +13,9 @@ Ext.define('CF.view.Map', {
         'CF.view.help.Action'
     ],
     border: 'false',
-    layout: 'fit',
-    region: 'west',
-    width: 800,
+//    layout: 'fit',
+    region: 'center',
+//    width: 800,
     // GeoExt.panel.Map-specific options :
     center: '-67.336,52.451',
     zoom: 9,

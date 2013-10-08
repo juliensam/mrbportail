@@ -31,9 +31,13 @@ Ext.define('CF.view.Viewport', {
                     xtype: 'cf_mappanel'
                 }, {
                     xtype: 'panel',
-                    region: 'center',
+                    region: 'east',
                     border: false,
                     id    : 'viewport',
+                    width: 400,
+                    maxWidth: 800,
+                    minWidth: 400,
+                    resizable: true,
                     layout: {
                         type: 'vbox',
                         align: 'stretch'
