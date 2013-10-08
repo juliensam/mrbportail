@@ -1,22 +1,17 @@
-Ext.define('CF.view.summit.Log', {
+Ext.define('CF.view.summit.Analyse', {
     extend: 'Ext.form.Panel',
-    alias : 'widget.summitlog',
+    alias : 'widget.summitanalyse',
 
     requires: [
         'Ext.form.*',
-        'CF.view.summit.DummyBar'
     ],
-
-    // private
-
-    dummyBar: null,
 
     initComponent: function() {
         var fieldset = {
             columnWidth: 0.4,
             margin: '0 0 0 10',
             xtype: 'fieldset',
-            title:'Borehole informations',
+            title:'Métaux',
             defaults: {
                 width: 240,
                 labelWidth: 90
@@ -26,28 +21,35 @@ Ext.define('CF.view.summit.Log', {
         }
 
         fieldset.items.push({
-            fieldLabel: 'Hole ID',
-            name: 'HOLE_ID'
+            fieldLabel: 'Fer',
+            name: 'fer'
         });
 
-        this.dummyBar = Ext.create('CF.view.summit.DummyBar');
+        fieldset.items.push({
+            fieldLabel: 'Cuivre',
+            name: 'cuivre'
+        });
+
+        fieldset.items.push({
+            fieldLabel: 'Or',
+            name: 'or'
+        });
+
+        fieldset.items.push({
+            fieldLabel: 'Platine',
+            name: 'platine'
+        });
 
         Ext.apply(this, {
-            title:'Log',
-            id: 'company-form',
+            title:'Analyses',
             bodyPadding: 5,
             fieldDefaults: {
                 labelAlign: 'left',
                 msgTarget: 'side'
             },
-            items: [fieldset, this.dummyBar]
+            items: [fieldset]
         });
 
         this.callParent(arguments);
-    },
-
-    // public
-    updateDummy: function(record) {
-        this.dummyBar.update(record);
     }
 });

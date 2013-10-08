@@ -4,12 +4,15 @@ Ext.define('CF.view.summit.tab.Panel', {
 
     requires: [
         'CF.view.summit.Chart',
-        'CF.view.summit.Log'
+        'CF.view.summit.Log',
+        'CF.view.summit.Analyse'
     ],
 
     // private properties
 
     summitLog: null,
+
+    summitAnalyse: null,
 
     initComponent: function() {
         var items = [];
@@ -25,9 +28,8 @@ Ext.define('CF.view.summit.tab.Panel', {
         });
 
         // analyses
-        items.push({
-            title: "Analyses"
-        });
+        this.summitAnalyse = Ext.create('CF.view.summit.Analyse');
+        items.push(this.summitAnalyse);
 
         // qa/qc
         items.push({
@@ -65,6 +67,7 @@ Ext.define('CF.view.summit.tab.Panel', {
     // load specified record in children components
     loadRecord: function(record) {
         this.summitLog.getForm().loadRecord(record);
-        this.summitLog.updateDummy();
+        this.summitLog.updateDummy(record);
+        this.summitAnalyse.getForm().loadRecord(record);
     }
 });

@@ -6,40 +6,30 @@ Ext.define('CF.view.summit.DummyBar', {
 
     cls: "cf-summitdummybar",
 
-    // private
-
-    count: 0,
-
-    numStates: 4,
-
     initComponent: function() {
         Ext.apply(this, {
             width: 346,
-                    height: 56,
-                    hidden: true
-                    //html: '<img src="resources/images/stacked-bars.jpg" />'
+            height: 56,
+            hidden: true
         });
 
         this.callParent(arguments);
     },
 
-    update: function() {
+    update: function(record) {
         var oldCls,
-            newCls;
+            newCls,
+            holeType;
 
+        holeType = record.get('holeType');
         this.show();
+        newCls = ["cf-summitdummybar-", holeType].join('');
 
-        oldCls = ["cf-summitdummybar-", this.count].join('');
+        this.removeCls("cf-summitdummybar-1");
+        this.removeCls("cf-summitdummybar-2");
+        this.removeCls("cf-summitdummybar-3");
+        this.removeCls("cf-summitdummybar-4");
 
-        if (this.count >= this.numStates) {
-            this.count = 1;
-        } else {
-            this.count++;
-        }
-
-        newCls = ["cf-summitdummybar-", this.count].join('');
-
-        this.removeCls(oldCls);
         this.addCls(newCls);
     }
 });
