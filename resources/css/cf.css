@@ -44,3 +44,19 @@
 .cf-summitdummybar-4 {
     background-position: 0 -287px;
 }
+
+.cf-button-maxextent {
+    background-image: url(../images/fatcow-hosting-icons-2400/16x16/zoom_extend.png);
+}
+
+.cf-button-navigation {
+    background-image: url(../images/fatcow-hosting-icons-2400/16x16/hand.png);
+}
+
+.cf-button-history-back {
+    background-image: url(../images/fatcow-hosting-icons-2400/16x16/resultset_previous.png);
+}
+
+.cf-button-history-next {
+    background-image: url(../images/fatcow-hosting-icons-2400/16x16/resultset_next.png);
+}
