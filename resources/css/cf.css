@@ -1,13 +1,14 @@
 .cf-header {
-    background-color: #252F49;
+    background-color: #1E1E1E;
     border-bottom: 1px solid #16191D;
     color: white;
     font-size: 16px;
     font-weight: bold;
-    padding: 10px;
-    text-align: center;
+    padding: 12px 32px 12px 0px;
+    text-align: right;
     text-shadow: 0 1px 0 #16191D;
-    
+    background-image: url(../images/mrb-associes-logo-small.jpg);
+    background-repeat: no-repeat;
 }
 
 .cf-helpwindow {
