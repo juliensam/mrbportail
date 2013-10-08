@@ -11,6 +11,7 @@ Ext.define('CF.view.Viewport', {
         'Ext.resizer.Splitter',
         'CF.view.Header',
         'CF.view.Map',
+        'CF.view.Tree',
         //'CF.view.summit.Chart',
         'CF.view.summit.Grid',
         'CF.view.summit.tab.Panel'
@@ -30,10 +31,20 @@ Ext.define('CF.view.Viewport', {
                 items: [{
                     xtype: 'cf_mappanel'
                 }, {
+                    xtype: 'cf_tree'
+                },{
                     xtype: 'panel',
-                    region: 'center',
+                    region: 'east',
                     border: false,
                     id    : 'viewport',
+                    width: 400,
+                    maxWidth: 800,
+                    minWidth: 400,
+                    split: true,
+                    collapsible: true,
+                    collapseMode: "mini",
+                    resizable: true,
+                    title: "Boreholes",
                     layout: {
                         type: 'vbox',
                         align: 'stretch'
