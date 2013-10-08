@@ -17,6 +17,8 @@ Ext.define('CF.controller.Map', {
 
     summitTabPanel: null,
 
+    mapPanel: null,
+
     init: function() {
         var me = this;
 
@@ -33,6 +35,7 @@ Ext.define('CF.controller.Map', {
                 'beforerender': this.onSummitTabPanelBeforeRender
             },
             'summitgrid': {
+                'beforeselect': this.onSummitGridBeforeSelect,
                 'selectionchange': this.onSummitGridSelectionChange
             }
         }, this);
@@ -136,6 +139,9 @@ Ext.define('CF.controller.Map', {
         // for dev purpose
         map = mapPanel.map;
         mapPanel = mapPanel;
+
+        // set private properties
+        this.mapPanel = mapPanel;
     },
 
     onLaunch: function() {
@@ -156,6 +162,19 @@ Ext.define('CF.controller.Map', {
 
     onSummitTabPanelBeforeRender: function(tabPanel, options) {
         this.summitTabPanel = tabPanel;
+    },
+
+    onSummitGridBeforeSelect: function(model, record, index, options) {
+        var map = this.mapPanel.map,
+            feature = record.raw,
+            selectedFeatures = feature.layer.selectedFeatures;
+
+        // feature about to be selected is no in the selected features array,
+        // this means it was not selected using the map, but using the grid.
+        // If so, recenter the map to feature location.
+        if (Ext.Array.indexOf(selectedFeatures, feature) == -1) {
+            map.setCenter(feature.geometry.getBounds().getCenterLonLat());
+        }
     },
 
     onSummitGridSelectionChange: function(model, records) {
