@@ -11,8 +11,9 @@ Ext.define('CF.view.Viewport', {
         'Ext.resizer.Splitter',
         'CF.view.Header',
         'CF.view.Map',
-        'CF.view.summit.Chart',
-        'CF.view.summit.Grid'
+        //'CF.view.summit.Chart',
+        'CF.view.summit.Grid',
+        'CF.view.summit.tab.Panel'
     ],
 
     initComponent: function() {
@@ -40,7 +41,8 @@ Ext.define('CF.view.Viewport', {
                     items: [
                         Ext.create('CF.view.summit.Grid'),
                         {xtype: 'splitter'},
-                        Ext.create('CF.view.summit.Chart')
+                        //Ext.create('CF.view.summit.Chart')
+                        Ext.create('CF.view.summit.tab.Panel')
                     ]
                 }]
             }]

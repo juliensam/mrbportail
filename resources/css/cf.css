@@ -22,3 +22,24 @@
 .cf-helpwindow h2 {
     margin: 2px 0 0 0;
 }
+
+.cf-summitdummybar {
+    background-image: url(../images/stacked-bars.jpg);
+    margin: 3px 10px;
+}
+
+.cf-summitdummybar-1 {
+    background-position: 0 0;
+}
+
+.cf-summitdummybar-2 {
+    background-position: 0 -95px;
+}
+
+.cf-summitdummybar-3 {
+    background-position: 0 -191px;
+}
+
+.cf-summitdummybar-4 {
+    background-position: 0 -287px;
+}
