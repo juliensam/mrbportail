@@ -40,7 +40,11 @@ Ext.define('CF.view.Viewport', {
                     width: 400,
                     maxWidth: 800,
                     minWidth: 400,
+                    split: true,
+                    collapsible: true,
+                    collapseMode: "mini",
                     resizable: true,
+                    title: "Boreholes",
                     layout: {
                         type: 'vbox',
                         align: 'stretch'
