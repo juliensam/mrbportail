@@ -23,31 +23,54 @@ Ext.define('CF.view.Map', {
             items = [],
             ctrl;
 
-        var map = new OpenLayers.Map();
+        var map = new OpenLayers.Map({
+            controls: [
+                new OpenLayers.Control.Zoom()
+            ]
+        });
 
         // ZoomToMaxExtent control, a "button" control
+        OpenLayers.Control.ZoomToCustomExtent = OpenLayers.Class(OpenLayers.Control.Button, {
+            extent: null,
+            trigger: function() {
+                if (this.map) {
+                    this.map.zoomToExtent(this.extent);
+                }    
+            },
+            CLASS_NAME: "OpenLayers.Control.ZoomToCustomExtent"
+        });
+
         items.push(Ext.create('Ext.button.Button', Ext.create('GeoExt.Action', {
-            control: new OpenLayers.Control.ZoomToMaxExtent(),
+            control: new OpenLayers.Control.ZoomToCustomExtent({
+                extent: new OpenLayers.Bounds.fromArray([
+                    -67.799306191407,
+                    52.014141957032,
+                    -66.927266396485,
+                    52.957592884766
+                ])
+            }),
             map: map,
-            text: "max extent",
-            tooltip: "zoom to max extent"
+            text: "Initial View",
+            tooltip: "Zoom to the initial view.",
+            iconCls: 'cf-button-maxextent'
         })));
 
         items.push("-");
 
         // Navigation control
         items.push(Ext.create('Ext.button.Button',Ext.create('GeoExt.Action', {
-            text: "nav",
+            text: "Navigation",
             control: new OpenLayers.Control.Navigation(),
             map: map,
             // button options
             toggleGroup: "draw",
             allowDepress: false,
             pressed: true,
-            tooltip: "navigate",
+            tooltip: "Pan/Zoom the map.",
             // check item options
             group: "draw",
-            checked: true
+            checked: true,
+            iconCls: 'cf-button-navigation'
         })));
 
         items.push("-");
@@ -57,26 +80,30 @@ Ext.define('CF.view.Map', {
         map.addControl(ctrl);
         
         items.push(Ext.create('Ext.button.Button', Ext.create('GeoExt.Action', {
-            text: "previous",
+            text: "Previous",
             control: ctrl.previous,
             disabled: true,
-            tooltip: "previous in history"
+            tooltip: "Go back in map navigation history.",
+            iconCls: 'cf-button-history-back'
         })));
         
         items.push(Ext.create('Ext.button.Button', Ext.create('GeoExt.Action', {
-            text: "next",
+            text: "Next",
             control: ctrl.next,
             disabled: true,
-            tooltip: "next in history"
+            tooltip: "Redo navigation history.",
+            iconCls: 'cf-button-history-next'
         })));
         items.push("->");
 
         // Help action
+        /*
         items.push(
             Ext.create('Ext.button.Button', Ext.create('CF.view.help.Action', {
                 windowContentEl: "help"
             }))
         );
+        */
         
         Ext.apply(me, {
             map: map,
