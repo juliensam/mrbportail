@@ -140,7 +140,7 @@ Ext.define('CF.controller.Map', {
                 var store = me.getSummitsStore();
                 store.fireEvent('update', store, store.getByFeature(feature));
             }
-        }),new OpenLayers.Control.LayerSwitcher()]);
+        })]);
 
         // for dev purpose
         map = mapPanel.map;
