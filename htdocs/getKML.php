@@ -21,7 +21,7 @@ if ($_POST) {
     } else {
         echo '{"success": false, "error": "fileContent parameter missing"}';
     }
-} else if ($_GET && $_GET['id']) {
+} else if ($_GET && $_GET['id'] && preg_match("/^[a-zA-Z0-9]+$/", $_GET['id'])) {
     $id = $_GET['id'];
     $fileName = 'export-'.$id.'.kml';
     $filePath = '/tmp/'.$fileName;
@@ -38,7 +38,7 @@ if ($_POST) {
     flush();
     readfile($filePath);
 } else {
-    echo '{"success": false, "error": "id parameter is missing"}';
+    echo '{"success": false, "error": "id parameter is missing or invalid"}';
 }
 
 exit;
