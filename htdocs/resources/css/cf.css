@@ -60,3 +60,7 @@
 .cf-button-history-next {
     background-image: url(../images/fatcow-hosting-icons-2400/16x16/resultset_next.png);
 }
+
+.cf-button-export {
+    background-image: url(../images/fatcow-hosting-icons-2400/16x16/table_export.png);
+}
