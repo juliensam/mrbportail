@@ -11,7 +11,8 @@ Ext.Loader.setConfig({
 
         // for build purpose
         GeoExt: "geoext2/src/GeoExt",
-        Ext: "extjs-4.1.0/src"
+        Ext: "extjs-4.1.0/src",
+        'Ext.ux': "extjs-4.1.0/examples/ux"
     }
 });
 

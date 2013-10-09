@@ -37,7 +37,7 @@ Ext.define('CF.view.Viewport', {
                     region: 'east',
                     border: false,
                     id    : 'viewport',
-                    width: 400,
+                    width: 600,
                     maxWidth: 800,
                     minWidth: 400,
                     split: true,
