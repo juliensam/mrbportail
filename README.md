@@ -19,3 +19,12 @@ Live URL: http://geohack2.mapgears.com/mrbportail/simple.html
 To learn more about this project feel free to contact Mapgears at info@mapgears.com
 
 
+Setup
+-----
+
+The following JavaScript libraries are required, each placed in the following
+specific directories:
+
+- OpenLayers 2.12: /opt/openlayers/2.12
+- ExtJS 4.1.0: /opt/ext/4.1.0
+- GeoExt 2.0 (master repository): /opt/geoext2
