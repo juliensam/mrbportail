@@ -8,7 +8,12 @@ Ext.define('CF.view.ExportPlugin', {
 
     // public properties (mandatory)
 
+    // the OpenLayers.Format to use to write the features as a string
     format: null,
+
+    // the url used to export and download the grid features using defined
+    // format as writer
+    url: null,
 
     // public properties (optional)
 
@@ -82,15 +87,36 @@ Ext.define('CF.view.ExportPlugin', {
             return;
         }
 
-        // open result in new window
-        newWindow = window.open(
-            '', 
-            this.text + ' ' + (new Date()).getTime(), "width=300, height=300"
-        );
-        newWindow.document.write(
-           '<textarea style="width: 100%; height: 100%">' + 
-           this.format.write(features) +
-           '</textarea>'
-        );
+        Ext.Ajax.request({
+            url: this.url,
+            params: {
+                fileContent: this.format.write(features)
+            },
+            success: function(response) {
+                var responseObj = Ext.decode(response.responseText),
+                    success = responseObj.success,
+                    error = responseObj.error;
+                if (success) {
+                    this.download(this.url);
+                } else {
+                    alert(error);
+                }
+            },
+            failure: function(response) {
+                alert("An unknown error occured. Please, contact your administrator.");
+            },
+            scope: this
+        });
+    },
+
+    download: function(url) {
+        if (Ext.isOpera) {
+            // Make sure that Opera don't replace the content tab with
+            // the pdf
+            window.open(url);
+        } else {
+            // This avoids popup blockers for all other browsers
+            window.location.href = url;                        
+        }
     }
 });

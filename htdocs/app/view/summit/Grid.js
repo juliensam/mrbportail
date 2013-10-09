@@ -43,7 +43,8 @@ Ext.define('CF.view.summit.Grid' ,{
                 }),
                 Ext.create('CF.view.ExportPlugin', {
                     cmp: this,
-                    format: new OpenLayers.Format.KML()
+                    format: new OpenLayers.Format.KML(),
+                    url: 'getKML.php'
                 })
             ],
             viewConfig: {
