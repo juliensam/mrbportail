@@ -35,10 +35,10 @@ Ext.define('CF.view.Viewport', {
                 },{
                     xtype: 'panel',
                     region: 'east',
-                    border: false,
+                    border: true,
                     id    : 'viewport',
-                    width: 400,
-                    maxWidth: 800,
+                    width: 700,
+                    maxWidth: 900,
                     minWidth: 400,
                     split: true,
                     collapsible: true,
