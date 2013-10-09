@@ -95,9 +95,11 @@ Ext.define('CF.view.ExportPlugin', {
             success: function(response) {
                 var responseObj = Ext.decode(response.responseText),
                     success = responseObj.success,
-                    error = responseObj.error;
-                if (success) {
-                    this.download(this.url);
+                    id = responseObj.id,
+                    error = responseObj.error,
+                    downloadUrl;
+                if (success && id) {
+                    this.download(Ext.urlAppend(this.url, 'id=' + id));
                 } else {
                     alert(error);
                 }

@@ -6,24 +6,29 @@
    *     folder. If as GET, return the file content.
    */
 
-$fileName = 'export.kml';
-$filePath = '/tmp/'.$fileName;
-
 if ($_POST) {
     if ($_POST["fileContent"]) {
+        $id = uniqid();
+        $fileName = 'export-'.$id.'.kml';
+        $filePath = '/tmp/'.$fileName;
+
         $fileContent = $_POST["fileContent"];
         if (file_put_contents($filePath, $fileContent) === false) {
             echo '{"success": false, "error": "error while writing content"}';
         } else {
-            echo '{"success": true}';
+            echo '{"success": true, id: "'.$id.'"}';
         }
     } else {
         echo '{"success": false, "error": "fileContent parameter missing"}';
     }
-} else {
+} else if ($_GET && $_GET['id']) {
+    $id = $_GET['id'];
+    $fileName = 'export-'.$id.'.kml';
+    $filePath = '/tmp/'.$fileName;
+
     header('Content-Description: File Transfer');
     header('Content-Type: application/vnd.google-earth.kml+xml');
-    header('Content-Disposition: attachment; filename='.$fileName);
+    header('Content-Disposition: attachment; filename=export.kml');
     header('Content-Transfer-Encoding: binary');
     header('Expires: 0');
     header('Cache-Control: must-revalidate');
@@ -32,6 +37,8 @@ if ($_POST) {
     ob_clean();
     flush();
     readfile($filePath);
+} else {
+    echo '{"success": false, "error": "id parameter is missing"}';
 }
 
 exit;
