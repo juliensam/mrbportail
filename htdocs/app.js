@@ -5,11 +5,13 @@ Ext.Loader.setConfig({
     enabled: true,
     disableCaching: false,
     paths: {
-        GeoExt: "/geoext2/src/GeoExt",
-        // for dev use
-        Ext: "http://cdn.sencha.io/ext-4.1.0-gpl/src"
+        // for dev use:
+        //GeoExt: "/geoext2/src/GeoExt",
+        //Ext: "http://cdn.sencha.io/ext-4.1.0-gpl/src"
+
         // for build purpose
-        //Ext: "extjs-4.1.0/src"
+        GeoExt: "geoext2/src/GeoExt",
+        Ext: "extjs-4.1.0/src"
     }
 });
 
