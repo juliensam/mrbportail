@@ -18,19 +18,19 @@ Ext.define('CF.view.summit.Grid' ,{
             border: false,
             columnLines: true,
             columns: [
-                {header: 'ID', dataIndex: 'HOLE_ID', flex: 3},
+                {header: 'ID', dataIndex: 'HOLE_ID', flex: 6},
                 {
                     header: 'Length',
                     dataIndex: 'LENGTH',
-                    width: 30,
+                    flex: 4,
                     editor: {xtype: 'numberfield'}
                 },
-                {header: 'Project', dataIndex: 'PROJECT', flex: 4},
-                {header: 'Township', dataIndex: 'TOWNSHIP', flex: 2},
-                {header: 'Claim', dataIndex: 'CLAIM_NO', flex: 4},
-                {header: 'Property', dataIndex: 'PROPERTY', flex: 4},
-                {header: 'Collar Dip', dataIndex: 'COLLAR_DIP', flex: 4},
-                {header: 'Collar AZ', dataIndex: 'COLLAR_AZ', flex: 4},
+                {header: 'Project', dataIndex: 'PROJECT', flex: 10},
+                {header: 'Township', dataIndex: 'TOWNSHIP', flex: 10},
+                {header: 'Claim', dataIndex: 'CLAIM_NO', flex: 5},
+                {header: 'Property', dataIndex: 'PROPERTY', flex: 8},
+                {header: 'Dip', dataIndex: 'COLLAR_DIP', flex: 3},
+                {header: 'AZ', dataIndex: 'COLLAR_AZ', flex: 3},
                 {header: 'Year', dataIndex: 'YEAR', flex: 4}
             ],
             flex: 1,
