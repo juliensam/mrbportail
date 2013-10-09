@@ -3,17 +3,20 @@
  * @extends Ext.grid.Panel
  */
 Ext.define('CF.view.summit.Grid' ,{
-    extend: 'Ext.grid.Panel',
+    extend: 'Ext.ux.LiveSearchGridPanel',
     alias : 'widget.summitgrid',
     requires: [
         'GeoExt.selection.FeatureModel',
         'GeoExt.grid.column.Symbolizer',
+        'Ext.util.*',
+        'Ext.tip.QuickTipManager',
         'Ext.grid.plugin.CellEditing',
         'Ext.form.field.Number'
     ],
     initComponent: function() {
         Ext.apply(this, {
             border: false,
+            columnLines: true,
             columns: [
                 {header: 'ID', dataIndex: 'HOLE_ID', flex: 3},
                 {
@@ -37,7 +40,10 @@ Ext.define('CF.view.summit.Grid' ,{
                 Ext.create('Ext.grid.plugin.CellEditing', {
                     clicksToEdit: 2
                 })
-            ]
+            ],
+            viewConfig: {
+                stripeRows: true
+            }
         });
         this.callParent(arguments);
         // store singleton selection model instance
