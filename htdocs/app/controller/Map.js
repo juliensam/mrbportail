@@ -123,7 +123,7 @@ Ext.define('CF.controller.Map', {
             graphicName: "circle"}
             }),
             protocol: new OpenLayers.Protocol.HTTP({
-                url: "data/Collar.json",
+                url: "resources/json/Collar.json",
                 format: new OpenLayers.Format.GeoJSON()
             }),
             strategies: [new OpenLayers.Strategy.Fixed()],
