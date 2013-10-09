@@ -28,3 +28,5 @@ specific directories:
 - OpenLayers 2.12: /opt/openlayers/2.12
 - ExtJS 4.1.0: /opt/ext/4.1.0
 - GeoExt 2.0 (master repository): /opt/geoext2
+
+PHP is also required to use the "KML Export" feature.

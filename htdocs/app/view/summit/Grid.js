@@ -11,7 +11,8 @@ Ext.define('CF.view.summit.Grid' ,{
         'Ext.util.*',
         'Ext.tip.QuickTipManager',
         'Ext.grid.plugin.CellEditing',
-        'Ext.form.field.Number'
+        'Ext.form.field.Number',
+        'CF.view.ExportPlugin'
     ],
     initComponent: function() {
         Ext.apply(this, {
@@ -39,6 +40,11 @@ Ext.define('CF.view.summit.Grid' ,{
             plugins: [
                 Ext.create('Ext.grid.plugin.CellEditing', {
                     clicksToEdit: 2
+                }),
+                Ext.create('CF.view.ExportPlugin', {
+                    cmp: this,
+                    format: new OpenLayers.Format.KML(),
+                    url: 'getKML.php'
                 })
             ],
             viewConfig: {
