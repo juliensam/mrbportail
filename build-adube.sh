@@ -10,7 +10,7 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR"/htdocs"
 
-sencha create jsb -a http://127.0.0.1/proj/mrb/mrbportail/htdocs/simple-dev.html -p app.jsb3
+sencha create jsb -a http://127.0.0.1/proj/mrb/mrbportail/htdocs/dev.html -p app.jsb3
 sencha build -d . -p app.jsb3
 
 cd ..
