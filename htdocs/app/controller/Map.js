@@ -64,14 +64,14 @@ Ext.define('CF.controller.Map', {
 		        // OpenLayers object creating
         var mapserv = new OpenLayers.Layer.WMS(
             "SIGEOM Geologie",
-            "http://sigeom.mrn.gouv.qc.ca/SIGEOM_WMS/Request.aspx?",
+            "http://sigeom.mines.gouv.qc.ca/SIGEOM_WMS/service.svc/get?",
             {layers: 'Geologie_detaillee_Quebec_50k',transparent:true}, {isBaseLayer: false}
         );
         layers.push(mapserv);
 		        // OpenLayers object creating
         var mapserv = new OpenLayers.Layer.WMS(
             "SIGEOM Forage",
-            "http://sigeom.mrn.gouv.qc.ca/SIGEOM_WMS/Request.aspx?",
+            "http://sigeom.mines.gouv.qc.ca/SIGEOM_WMS/service.svc/get?",
             {layers: 'Forage_diamant',transparent:true}, {isBaseLayer: false}
         );
         layers.push(mapserv);
